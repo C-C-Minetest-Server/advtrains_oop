@@ -290,9 +290,9 @@ local train_ref_metatable = {
 
 -- Exposing train reference class methods so other mods can add their own
 -- e.g. livery tool
-atlatc.train_ref_class = train_ref_class
+advtrains_oop.train_ref_class = train_ref_class
 
-atlatc.get_train_object = function(atc_id, atc_arrow)
+advtrains_oop.get_train_object = function(atc_id, atc_arrow)
     if not advtrains.trains[atc_id] then return false end
     if atc_arrow == nil then
         atc_arrow = true
