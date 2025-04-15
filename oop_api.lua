@@ -249,6 +249,27 @@ function train_ref_class:set_text_inside(text)
     return true
 end
 
+-- LZB checkpoint
+
+function train_ref_class:get_lzb_checkpoints()
+    local train = advtrains.trains[self.atc_id]
+        if not (train and train.lzb) then return false end
+        local sanitized_checkpoints = {}
+
+        for i, data in ipairs(train.lzb.checkpoints) do
+            sanitized_checkpoints[i] = {
+                pos = {
+                    x = data.pos.x,
+                    y = data.pos.y,
+                    z = data.pos.z
+                },
+                index = data.index,
+                speed = data.speed,
+            }
+        end
+    end
+end
+
 -- Interlocking and ARS
 
 if advtrains.interlocking then

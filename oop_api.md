@@ -61,6 +61,12 @@ TODO: Properly invalidate train references when a train vanishes, i.e. do not le
 * `:set_text_outside(text)`, `:set_text_inside(text)`: Set the text displayed outside and inside of the train respectively.
   * If `text` is `nil`, the string is emptied.
 
+## LZB Checkpoint
+
+* `:get_lzb_checkpoints()`: Get all LZB checkpoints in front of that train, from the nearest to the most far away.
+  * Returns `false` if failed to query checkpoint (i.e. LZB not yet initialized and you should wait), otherwise a table.
+  * Only `pos`, `index` and `speed` are kept in the returned table. The table may be empty.
+
 ## Interlocking and ARS
 
 *(only avaliable if `advtrains_interlocking` is loaded)*
