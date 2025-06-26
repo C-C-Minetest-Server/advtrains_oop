@@ -32,6 +32,11 @@ function train_ref_class:train_length_meters()
     return train and train.trainlen or false
 end
 
+function train_ref_class:locomotives_in_train()
+    local train = advtrains.trains[self.atc_id]
+    return train and train.locomotives_in_train or false
+end
+
 -- ATC
 
 function train_ref_class:atc_send(command)
