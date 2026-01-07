@@ -201,7 +201,7 @@ function train_ref_class:set_rc(rc)
 end
 
 function train_ref_class:has_rc(query)
-    local rc_list = self:get_rc()
+    local rc_list = train_ref_class.get_rc(self)
     if not rc_list then return false end
 
     for word in rc_list:gmatch("[^%s]+") do
