@@ -20,6 +20,7 @@ TODO: Properly invalidate train references when a train vanishes, i.e. do not le
 * `:get_id()` -> `number`: Return the train ID of the train
 * `:train_length()` -> `number`: Return the number of wagons in this train
 * `:train_length_meters()` -> `number`: Return the length of this train in meters
+* `:train_parts()` -> `string[]`: List of wagon part IDs
 
 ## Automated Train Control (ATC) commands
 
