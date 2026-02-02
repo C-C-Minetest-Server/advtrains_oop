@@ -115,26 +115,38 @@ function train_ref_class:get_fc()
     return fc_list
 end
 
-function train_ref_class:set_fc(fc_list)
+function train_ref_class:get_fc_index = function()
+    local train = advtrains.trains[self.atc_id]
+    if not train then return false end
+        local fc_index_list = {}
+        for widx, wagon_id in ipairs(train.trainparts) do
+            fc_index_list[widx] = advtrains.wagons[wagon_id].fcind or 1
+        end
+        return fc_index_list
+    end
+end
+
+function train_ref_class:set_fc = function(fc_list, reset_index)
     assertt(fc_list, "table")
     local train = advtrains.trains[self.atc_id]
     if not train then return false end
     -- safety type-check for entered values
-    for _, v in ipairs(fc_list) do
+    for _,v in ipairs(fc_list) do
         if v and type(v) ~= "string" then
             error("FC entries must be a string")
             return
         end
     end
     for index, wagon_id in ipairs(train.trainparts) do
-        if fc_list[index] then                                 -- has FC to enter to this wagon
+        if fc_list[index] then -- has FC to enter to this wagon
             local data = advtrains.wagons[wagon_id]
-            if data then                                       -- wagon actually exists
-                for _, wagon in pairs(core.luaentities) do -- find wagon entity
-                    if wagon.is_wagon and wagon.initialized and wagon.id == wagon_id then
-                        wagon.set_fc(data, fc_list[index])     -- overwrite to new FC
-                        break                                  -- found, no point cycling through every other entity
-                    end
+            if data then -- wagon actually exists
+                --effectively copied from wagons.lua, allowing for the :split function and reset_index
+                data.fc = fc_list[index]:split("!")
+                if reset_index or not data.fcind then
+                    data.fcind = 1
+                elseif data.fcind > #data.fc then
+                    data.fcind = #data.fc
                 end
             end
         end
