@@ -76,6 +76,7 @@ TODO: Properly invalidate train references when a train vanishes, i.e. do not le
 
 *(only avaliable if `advtrains_interlocking` is loaded)*
 
+* `:get_ars_disable()`: Returns `true` if ARS is disabled on the train
 * `:set_ars_disable(value)`: If `true`, ARS will be disabled on the train
   * This can also be done via `:atc_send("A<value>")`, where `<value>` is 1 or 0 depending on what you want to do.
 * `:ars_check_rule_match(ars)`: Check the train against the given ARS ruleset
