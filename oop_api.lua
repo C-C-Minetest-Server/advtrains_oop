@@ -118,12 +118,11 @@ end
 function train_ref_class:get_fc_index()
     local train = advtrains.trains[self.atc_id]
     if not train then return false end
-        local fc_index_list = {}
-        for widx, wagon_id in ipairs(train.trainparts) do
-            fc_index_list[widx] = advtrains.wagons[wagon_id].fcind or 1
-        end
-        return fc_index_list
+    local fc_index_list = {}
+    for widx, wagon_id in ipairs(train.trainparts) do
+        fc_index_list[widx] = advtrains.wagons[wagon_id].fcind or 1
     end
+    return fc_index_list
 end
 
 function train_ref_class:set_fc(fc_list, reset_index)
