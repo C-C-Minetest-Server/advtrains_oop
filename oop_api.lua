@@ -115,7 +115,7 @@ function train_ref_class:get_fc()
     return fc_list
 end
 
-function train_ref_class:get_fc_index = function()
+function train_ref_class:get_fc_index()
     local train = advtrains.trains[self.atc_id]
     if not train then return false end
         local fc_index_list = {}
@@ -126,7 +126,7 @@ function train_ref_class:get_fc_index = function()
     end
 end
 
-function train_ref_class:set_fc = function(fc_list, reset_index)
+function train_ref_class:set_fc(fc_list, reset_index)
     assertt(fc_list, "table")
     local train = advtrains.trains[self.atc_id]
     if not train then return false end
