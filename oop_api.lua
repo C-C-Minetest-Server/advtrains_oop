@@ -83,7 +83,7 @@ function train_ref_class:split_at_fc(cmd, length_limit)
     local train = advtrains.trains[self.atc_id]
     local new_id, fc = advtrains.split_train_at_fc(train, false, length_limit)
     if new_id then
-        core.after(0.1, advtrains.atc.train_set_command, advtrains.trains[new_id], cmd, atc_arrow)
+        core.after(0.1, advtrains.atc.train_set_command, advtrains.trains[new_id], cmd, self.atc_arrow)
     end
     return fc or ""
 end
@@ -91,9 +91,9 @@ end
 function train_ref_class:split_off_locomotive(cmd, len)
     assertt(cmd, "string")
     local train = advtrains.trains[self.atc_id]
-    local new_id, fc = advtrains.split_train_at_fc(train, true, len)
+    local new_id, _ = advtrains.split_train_at_fc(train, true, len)
     if new_id then
-        core.after(0.1, advtrains.atc.train_set_command, advtrains.trains[new_id], cmd, atc_arrow)
+        core.after(0.1, advtrains.atc.train_set_command, advtrains.trains[new_id], cmd, self.atc_arrow)
     end
 end
 
@@ -294,7 +294,7 @@ end
 -- Interlocking and ARS
 
 if advtrains.interlocking then
-    function train_ref_class:get_ars_disable(value)
+    function train_ref_class:get_ars_disable()
         local train = advtrains.trains[self.atc_id]
         if not train then return false end
         return train.ars_disable

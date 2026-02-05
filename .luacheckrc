@@ -52,9 +52,3 @@ read_globals = {
         }
     },
 }
-
-file["oop_api.lua"] = {
-    globals = {
-        "atc_arrow",
-    }
-}

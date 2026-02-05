@@ -36,12 +36,12 @@ TODO: Properly invalidate train references when a train vanishes, i.e. do not le
 ## Freight codes
 
 * `:step_fc()`: Steps the FCs of all train cars forward, selecting the next code after the `!`. If the end of the string is reached, then the
-	first code is selected, except if the string ends with a question
-	mark (`?`), then the order is reversed.
+  first code is selected, except if the string ends with a question
+  mark (`?`), then the order is reversed.
 * `:get_fc()`-> `table`: Returns a table with the entire FC list for each wagon in the train, formatted as: `{"foo!bar","","another"}`
 * `:get_fc_index()` -> `table`: Returns a table with the current FC index (`number`) for each wagon in the train. Use in conjunction with the result from `:get_fc()` to find a the current FC for a wagon.
 * `:set_fc(fc_list, reset_index)`: Overwrites the FC list according to a table `fc_list` (to be formatted eg: `{"foo!bar",nil,"another",false}`). A false or nil entry will leave the wagon unaffected, however all others will be overwritten.
-	Useful for mass-programming freight trains that use FC-shunting instead of walking to each wagon individually. If the new FC entry for a wagon is shorter than the old entry, the index will clip to the last FC in the new entry. If `reset_index` is true, all current FC values will reset to the first entry in the list, instead of remaining at the current index.
+  Useful for mass-programming freight trains that use FC-shunting instead of walking to each wagon individually. If the new FC entry for a wagon is shorter than the old entry, the index will clip to the last FC in the new entry. If `reset_index` is true, all current FC values will reset to the first entry in the list, instead of remaining at the current index.
 
 ## Shunting and Autocoupling
 
